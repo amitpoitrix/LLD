@@ -68,16 +68,12 @@ public class ParkingLot {
     }
 
     private List<ParkingSpot> getParkingLotList(VehicleType type) {
-        switch (type) {
-            case CAR:
-                return carSpot;
-            case BIKE:
-                return bikeSpot;
-            case TRUCK:
-                return truckSpot;
-            default:
-                throw new IllegalArgumentException("Invalid vehicle type");
-        }
+        return switch (type) {
+            case CAR -> carSpot;
+            case BIKE -> bikeSpot;
+            case TRUCK -> truckSpot;
+            default -> throw new IllegalArgumentException("Invalid vehicle type");
+        };
     }
 
     public double removeVehicle(String licensePlate) {
